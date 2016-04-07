@@ -31,11 +31,11 @@ if [[ ! -z "$CLI_PROFILE" ]]; then
 fi
 
 # Create S3 Bucket
-aws s3 mb s3://$BUCKET
+aws --region $REGION s3 mb s3://$BUCKET
 
 # Create DynamoDB Tables
 echo "Creating DynamoDB Table $DDB_TABLE begin..."
-aws dynamodb create-table --table-name $DDB_TABLE \
+aws --region $REGION dynamodb create-table --table-name $DDB_TABLE \
     --attribute-definitions AttributeName=email,AttributeType=S \
     --key-schema AttributeName=email,KeyType=HASH \
     --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 \
@@ -48,7 +48,7 @@ IDENTITY_POOL_ID=$(aws cognito-identity list-identity-pools --max-results 1 \
 	  --output text --region $REGION)
 if [ -z "$IDENTITY_POOL_ID" ]; then
 	echo "Creating Cognito Identity Pool $IDENTITY_POOL_NAME begin..."
-	IDENTITY_POOL_ID=$(aws cognito-identity create-identity-pool --identity-pool-name $IDENTITY_POOL_NAME \
+	IDENTITY_POOL_ID=$(aws --region $REGION cognito-identity create-identity-pool --identity-pool-name $IDENTITY_POOL_NAME \
 	    --allow-unauthenticated-identities --developer-provider-name $DEVELOPER_PROVIDER_NAME \
 	    --query 'IdentityPoolId' --output text --region $REGION)
 	echo "Identity Pool Id: $IDENTITY_POOL_ID"
@@ -137,7 +137,7 @@ for f in $(ls -1|grep ^LambdAuth); do
   cp config.json $f/
   cd $f
   zip -r $f.zip index.js config.json
-  aws lambda create-function --function-name ${f} \
+  aws --region $REGION lambda create-function --function-name ${f} \
       --runtime nodejs \
       --role arn:aws:iam::"$AWS_ACCOUNT_ID":role/${f} \
       --handler index.handler \
