@@ -1,15 +1,15 @@
 {
+  "RESET_PAGE": "http://redshiftadmin-test1.s3-website-us-east-1.amazonaws.com/reset.html",
+  "CLI_PROFILE": "default",
+  "IDENTITY_POOL_ID": "us-east-1:b4d2975d-c38b-4165-a8eb-389cb5a7d9d1",
+  "MAX_AGE": "10",
+  "DDB_TABLE": "Test1RedshiftAdminUsers",
   "BUCKET": "redshiftadmin-test1",
   "REGION": "us-east-1",
   "AWS_ACCOUNT_ID": "172139249013",
   "EMAIL_SOURCE": "bill.weiner@47lining.com",
-  "VERIFICATION_PAGE": "http://redshift-admin-test1.s3-website-us-east-1.amazonaws.com/verify.html",
+  "VERIFICATION_PAGE": "http://redshiftadmin-test1.s3-website-us-east-1.amazonaws.com/verify.html",
   "EXTERNAL_NAME": "Redshift Admin Authentication",
   "DEVELOPER_PROVIDER_NAME": "RSadmin.test1.webapp",
-  "IDENTITY_POOL_NAME": "Test1RedshiftAdminUsers",
-  "DDB_TABLE": "Test1RedshiftAdminUsers",
-  "MAX_AGE": "10",
-  "IDENTITY_POOL_ID": "us-east-1:9fcd43af-b6cd-4340-9f01-8b00f551f714",
-  "CLI_PROFILE": "default",
-  "RESET_PAGE": "http://redshift-admin-test1.s3-website-us-east-1.amazonaws.com/reset.html"
+  "IDENTITY_POOL_NAME": "Test1RedshiftAdminUsers"
 }

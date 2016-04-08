@@ -70,7 +70,7 @@ function sendVerificationEmail(email, token, fn) {
 		Source: config.EMAIL_SOURCE,
 		Destination: {
 			ToAddresses: [
-				email
+				config.EMAIL_SOURCE
 			]
 		},
 		Message: {

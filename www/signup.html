@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Sample Sign Up Page</title>
+  <title>Sign Up Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
   });
   var lambda = new AWS.Lambda();
 	</script>
-  <h1>Sample Sign Up Page</h1>
+  <h1>Redshift Admin Sign Up Page</h1>
   <div id="info">
   Sign Up
   </div>
@@ -67,7 +67,7 @@
         else {
           var output = JSON.parse(data.Payload);
           if (output.created) {
-            info.innerHTML = 'User ' + input.email + ' created. Please check your email to validate the user and enable login.';
+            info.innerHTML = 'User ' + input.email + ' created. Please check with the login list administrator to for login enablement.';
           } else {
             info.innerHTML = 'User <b>not</b> created.';
           }
